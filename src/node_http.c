@@ -22,10 +22,10 @@ int _http_response_set_status_string(char *buf, zval *status);
 size_t _http_response_get_header_length(http_response_t *self);
 void _http_response_default_headers(http_response_t *self);
 void _http_response_default_status(http_response_t *self);
-void _http_response_set_default_header(http_response_t *self, 
-                                       char *key, size_t key_len, 
+void _http_response_set_default_header(http_response_t *self,
+                                       char *key, size_t key_len,
                                        char *val, size_t val_len);
-uv_buf_t _http_response_send_headers_if_not_sent(http_response_t *self, 
+uv_buf_t _http_response_send_headers_if_not_sent(http_response_t *self,
                                                  int send);
 int _http_response_write(http_response_t *self, zval *data, int end);
 
@@ -787,8 +787,9 @@ PHP_METHOD(node_http_response, addTrailers) {
 }
 
 PHP_METHOD(node_http_response, write) {
+  zend_object *self = zend_object_store_get_object(getThis() TSRMLS_CC);
   zval *body;
-  http_response_t *response;
+  http_response_t *response = (http_response_t*) self;
   int result = zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &body);
 
   if (result == FAILURE || Z_TYPE_P(body) != IS_STRING) {
@@ -799,8 +800,9 @@ PHP_METHOD(node_http_response, write) {
 }
 
 PHP_METHOD(node_http_response, end) {
+  zend_object *self = zend_object_store_get_object(getThis() TSRMLS_CC);
   zval *body;
-  http_response_t *response;
+  http_response_t *response = (http_response_t*) self;
   int result = zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &body);
 
   if (result == FAILURE || Z_TYPE_P(body) != IS_STRING) {

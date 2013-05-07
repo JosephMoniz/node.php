@@ -27,6 +27,7 @@ zval* node_function_call_zval(zval *func, int argc, ...) {
     // call the function
     zend_call_function(&fci, &fci_cache TSRMLS_CC);
   } else {
+    ALLOC_INIT_ZVAL(result);
     ZVAL_BOOL(result, 0);
   }
 

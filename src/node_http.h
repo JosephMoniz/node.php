@@ -7,7 +7,7 @@
  * Setup some convenience typedefs for various HTTP types
  */
 typedef struct _http_wrap_t http_wrap_t;
-typedef struct _http_request_t http_request_t;                     
+typedef struct _http_request_t http_request_t;
 typedef struct _http_response_t http_response_t;
 typedef struct _http_write_t http_write_t;
 

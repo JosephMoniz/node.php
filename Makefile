@@ -34,7 +34,7 @@ OBJ = $(BUILDDIR)/node_events.o           \
       $(BUILDDIR)/nodephp.o
 
 DEPS = $(UVDIR)/uv.a                      \
-       $(HTTPDIR)/libhttp_parser.o        
+       $(HTTPDIR)/libhttp_parser.o
 
 $(BUILDDIR)/nodephp.so: $(DEPS) $(OBJ)
 	$(CC) $(CFLAGS_FAST) $(LDFLAGS) -o $@ $^
